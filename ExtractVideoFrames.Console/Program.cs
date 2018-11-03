@@ -19,17 +19,18 @@ namespace ExtractVideoFrames.Console
 
                 engine.GetMetadata(mp4);
 
-                var i = 0;
+                var i = 1;
                 while (i < mp4.Metadata.Duration.TotalMinutes)
                 {
                     try
                     {
                         var seekTime = TimeSpan.FromMinutes(i);
-                        var outputFile = new MediaFile {Filename = $"{OUTPUT_DIRECTORY}\\image-{i:00000}.jpeg"};
-                        System.Console.WriteLine($"Processing seekTime={seekTime} to outputFile=\"{outputFile}\"");
+                        var fileName = $"{OUTPUT_DIRECTORY}\\image-{i:00000}.jpeg";
+                        var mediaFile = new MediaFile {Filename = fileName};
+                        System.Console.WriteLine($"Processing seekTime={seekTime} to fileName=\"{fileName}\"");
 
                         var options = new ConversionOptions {Seek = seekTime};
-                        engine.GetThumbnail(mp4, outputFile, options);
+                        engine.GetThumbnail(mp4, mediaFile, options);
                         i++;
                     }
                     catch (Exception ex)
