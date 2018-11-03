@@ -3,6 +3,21 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <StartupObject>ExtractVideoFrames.Program</StartupObject>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="videos\cb85.mp4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="videos\cb85.mp4">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
+  </ItemGroup>
 
 </Project>
